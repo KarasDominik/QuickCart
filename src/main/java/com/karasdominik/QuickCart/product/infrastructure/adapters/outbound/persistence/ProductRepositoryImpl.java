@@ -21,6 +21,6 @@ public class ProductRepositoryImpl implements ProductRepository {
 
     @Override
     public ProductId save(Product product) {
-        return products.save(product).id();
+        return ProductId.of(products.save(product).id());
     }
 }

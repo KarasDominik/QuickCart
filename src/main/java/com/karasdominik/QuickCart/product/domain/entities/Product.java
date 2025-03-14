@@ -12,6 +12,8 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.util.UUID;
+
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
@@ -21,14 +23,14 @@ import lombok.NoArgsConstructor;
 public class Product {
 
     @Id
-    private ProductId id;
+    private UUID id;
     private String name;
     private String description;
     private Price price;
 
     public static Product create(CreateProductCommand command) {
         return Product.builder()
-                .id(ProductId.create())
+                .id(ProductId.create().value())
                 .name(command.name())
                 .description(command.description())
                 .price(command.price())

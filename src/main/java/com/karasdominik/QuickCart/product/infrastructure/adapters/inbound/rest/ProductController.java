@@ -27,7 +27,7 @@ class ProductController {
 
     @PostMapping
     @ResponseStatus(CREATED)
-    ProductId create(@RequestBody CreateProductRequest request) {
-        return service.create(asCommand(request));
+    CreateProductResponse create(@RequestBody CreateProductRequest request) {
+        return CreateProductResponse.of(service.create(asCommand(request)));
     }
 }

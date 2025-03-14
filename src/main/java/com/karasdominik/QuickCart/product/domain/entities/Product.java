@@ -4,15 +4,15 @@ import com.karasdominik.QuickCart.product.domain.dto.CreateProductCommand;
 import com.karasdominik.QuickCart.product.domain.dto.ProductDto;
 import com.karasdominik.QuickCart.product.domain.dto.ProductId;
 import com.karasdominik.QuickCart.product.domain.valueobjects.Price;
+import jakarta.persistence.AttributeOverride;
+import jakarta.persistence.Column;
+import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-
-import java.util.UUID;
 
 @Entity
 @NoArgsConstructor
@@ -22,15 +22,16 @@ import java.util.UUID;
 @Getter
 public class Product {
 
-    @Id
-    private UUID id;
+    @EmbeddedId
+    @AttributeOverride(name = "value", column = @Column(name = "id"))
+    private ProductId id;
     private String name;
     private String description;
     private Price price;
 
     public static Product create(CreateProductCommand command) {
         return Product.builder()
-                .id(ProductId.create().value())
+                .id(ProductId.create())
                 .name(command.name())
                 .description(command.description())
                 .price(command.price())

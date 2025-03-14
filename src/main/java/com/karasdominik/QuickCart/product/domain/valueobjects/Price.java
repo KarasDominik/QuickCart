@@ -13,6 +13,10 @@ public record Price(BigDecimal value) {
         return new Price(value);
     }
 
+    public static Price of(String value) {
+        return new Price(new BigDecimal(value));
+    }
+
     private static final FieldInfo PRICE = new FieldInfo("price");
 
     public Price {

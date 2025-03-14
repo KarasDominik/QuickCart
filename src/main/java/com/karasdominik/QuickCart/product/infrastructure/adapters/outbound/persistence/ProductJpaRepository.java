@@ -1,16 +1,7 @@
 package com.karasdominik.QuickCart.product.infrastructure.adapters.outbound.persistence;
 
-import com.karasdominik.QuickCart.product.application.ports.outbound.ProductRepository;
+import com.karasdominik.QuickCart.product.domain.dto.ProductId;
 import com.karasdominik.QuickCart.product.domain.entities.Product;
-import org.springframework.stereotype.Service;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-import java.util.List;
-
-@Service
-public class ProductJpaRepository implements ProductRepository {
-
-    @Override
-    public List<Product> getAll() {
-        return List.of();
-    }
-}
+interface ProductJpaRepository extends JpaRepository<Product, ProductId> {}

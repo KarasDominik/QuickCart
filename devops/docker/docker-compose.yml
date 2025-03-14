@@ -1,6 +1,10 @@
 services:
-  mongodb:
-    image: mongo:latest
-    container_name: mongodb
+  postgres:
+    image: postgres:17
+    container_name: quickcart-postgres-db
+    environment:
+      POSTGRES_USER: quickcart
+      POSTGRES_PASSWORD: quickcart
+      POSTGRES_DB: quickcart
     ports:
-      - "27017:27017"
+        - "5432:5432"

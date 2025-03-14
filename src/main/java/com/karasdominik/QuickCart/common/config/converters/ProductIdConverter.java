@@ -1,6 +1,6 @@
-package com.karasdominik.QuickCart.product.infrastructure.configuration.converters;
+package com.karasdominik.QuickCart.common.config.converters;
 
-import com.karasdominik.QuickCart.product.domain.dto.ProductId;
+import com.karasdominik.QuickCart.common.dto.ProductId;
 import jakarta.persistence.AttributeConverter;
 import jakarta.persistence.Converter;
 

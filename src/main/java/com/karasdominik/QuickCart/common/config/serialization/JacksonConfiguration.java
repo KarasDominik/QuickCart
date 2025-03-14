@@ -1,4 +1,4 @@
-package com.karasdominik.QuickCart.product.infrastructure.configuration.serialization;
+package com.karasdominik.QuickCart.common.config.serialization;
 
 import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.ObjectMapper;

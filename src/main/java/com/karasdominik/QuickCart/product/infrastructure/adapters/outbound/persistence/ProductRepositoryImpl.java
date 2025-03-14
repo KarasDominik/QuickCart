@@ -1,7 +1,7 @@
 package com.karasdominik.QuickCart.product.infrastructure.adapters.outbound.persistence;
 
 import com.karasdominik.QuickCart.product.application.ports.outbound.ProductRepository;
-import com.karasdominik.QuickCart.product.domain.dto.ProductId;
+import com.karasdominik.QuickCart.common.dto.ProductId;
 import com.karasdominik.QuickCart.product.domain.entities.Product;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

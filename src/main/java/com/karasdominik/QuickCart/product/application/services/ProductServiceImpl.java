@@ -4,7 +4,7 @@ import com.karasdominik.QuickCart.product.application.ports.inbound.ProductProvi
 import com.karasdominik.QuickCart.product.application.ports.outbound.ProductRepository;
 import com.karasdominik.QuickCart.product.domain.dto.CreateProductCommand;
 import com.karasdominik.QuickCart.product.domain.dto.ProductDto;
-import com.karasdominik.QuickCart.product.domain.dto.ProductId;
+import com.karasdominik.QuickCart.common.dto.ProductId;
 import com.karasdominik.QuickCart.product.domain.entities.Product;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

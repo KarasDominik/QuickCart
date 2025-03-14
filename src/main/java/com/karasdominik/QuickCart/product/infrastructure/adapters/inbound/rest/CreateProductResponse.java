@@ -1,6 +1,6 @@
 package com.karasdominik.QuickCart.product.infrastructure.adapters.inbound.rest;
 
-import com.karasdominik.QuickCart.product.domain.dto.ProductId;
+import com.karasdominik.QuickCart.common.dto.ProductId;
 
 record CreateProductResponse(ProductId id) {
 

@@ -23,6 +23,12 @@ public class FieldAssertions {
         }
     }
 
+    public static void notLessThan(int value, int minValue, FieldInfo field) {
+        if (value < minValue) {
+            throw new InvalidFieldException(String.format("Field '%s' cannot be less than than %s", field.name(), minValue));
+        }
+    }
+
     public static void greaterThan(BigDecimal value, BigDecimal threshold, FieldInfo field) {
         if (value.compareTo(threshold) <= 0) {
             throw new InvalidFieldException(String.format("Field '%s' has to be greater than %s", field.name(), threshold));

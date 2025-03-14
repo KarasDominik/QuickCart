@@ -2,7 +2,7 @@ package com.karasdominik.QuickCart.product.domain.entities;
 
 import com.karasdominik.QuickCart.product.domain.dto.CreateProductCommand;
 import com.karasdominik.QuickCart.product.domain.dto.ProductDto;
-import com.karasdominik.QuickCart.product.domain.dto.ProductId;
+import com.karasdominik.QuickCart.common.dto.ProductId;
 import com.karasdominik.QuickCart.product.domain.valueobjects.Price;
 import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.Column;

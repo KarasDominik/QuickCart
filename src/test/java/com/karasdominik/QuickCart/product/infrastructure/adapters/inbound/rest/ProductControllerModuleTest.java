@@ -1,7 +1,7 @@
 package com.karasdominik.QuickCart.product.infrastructure.adapters.inbound.rest;
 
-import com.karasdominik.QuickCart.common.BaseAbstractITTest;
-import com.karasdominik.QuickCart.product.domain.dto.ProductId;
+import com.karasdominik.QuickCart.common.BaseAbstractModuleTest;
+import com.karasdominik.QuickCart.common.dto.ProductId;
 import com.karasdominik.QuickCart.product.infrastructure.adapters.outbound.persistence.ProductAssertions;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -18,7 +18,7 @@ import static org.springframework.boot.test.context.SpringBootTest.WebEnvironmen
 
 @ApplicationModuleTest(webEnvironment = RANDOM_PORT)
 @ComponentScan("com.karasdominik.QuickCart.product.infrastructure.adapters.outbound.persistence")
-public class ProductControllerITTest extends BaseAbstractITTest {
+public class ProductControllerModuleTest extends BaseAbstractModuleTest {
 
     private static final String PATH = "/api/v1/products";
 

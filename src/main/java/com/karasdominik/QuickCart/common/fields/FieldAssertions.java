@@ -29,6 +29,18 @@ public class FieldAssertions {
         }
     }
 
+    public static void notShorterThan(String value, int minLength, FieldInfo field) {
+        if (value.length() < minLength) {
+            throw new InvalidFieldException(String.format("Field '%s' must contain at least %s characters", field.name(), minLength));
+        }
+    }
+
+    public static void notLongerThan(String value, int maxLength, FieldInfo field) {
+        if (value.length() > maxLength) {
+            throw new InvalidFieldException(String.format("Field '%s' must contain at most %s characters", field.name(), maxLength));
+        }
+    }
+
     public static void greaterThan(BigDecimal value, BigDecimal threshold, FieldInfo field) {
         if (value.compareTo(threshold) <= 0) {
             throw new InvalidFieldException(String.format("Field '%s' has to be greater than %s", field.name(), threshold));

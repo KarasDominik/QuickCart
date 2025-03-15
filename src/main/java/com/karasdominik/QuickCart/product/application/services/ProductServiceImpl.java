@@ -1,6 +1,6 @@
 package com.karasdominik.QuickCart.product.application.services;
 
-import com.karasdominik.QuickCart.product.application.ports.inbound.ProductProvider;
+import com.karasdominik.QuickCart.product.application.ports.inbound.ProductService;
 import com.karasdominik.QuickCart.product.application.ports.outbound.ProductRepository;
 import com.karasdominik.QuickCart.product.domain.dto.CreateProductCommand;
 import com.karasdominik.QuickCart.product.domain.dto.ProductDto;
@@ -17,7 +17,7 @@ import java.util.List;
 @RequiredArgsConstructor
 @Transactional
 @Slf4j
-public class ProductServiceImpl implements ProductProvider {
+public class ProductServiceImpl implements ProductService {
 
     private final ProductRepository products;
 

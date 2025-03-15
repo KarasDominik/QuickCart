@@ -6,7 +6,7 @@ import com.karasdominik.QuickCart.common.dto.ProductId;
 
 import java.util.List;
 
-public interface ProductProvider {
+public interface ProductService {
 
     List<ProductDto> getAll();
 

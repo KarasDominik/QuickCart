@@ -2,6 +2,8 @@ package com.karasdominik.QuickCart.product.infrastructure.adapters.outbound.pers
 
 import com.karasdominik.QuickCart.product.domain.entities.Product;
 import com.karasdominik.QuickCart.product.domain.valueobjects.Price;
+import com.karasdominik.QuickCart.product.domain.valueobjects.ProductDescription;
+import com.karasdominik.QuickCart.product.domain.valueobjects.ProductName;
 import org.assertj.core.api.AbstractAssert;
 
 class ProductAssert extends AbstractAssert<ProductAssert, Product> {
@@ -14,7 +16,7 @@ class ProductAssert extends AbstractAssert<ProductAssert, Product> {
         return new ProductAssert(product);
     }
 
-    ProductAssert hasName(String expected) {
+    ProductAssert hasName(ProductName expected) {
         isNotNull();
         if (!actual.name().equals(expected)) {
             failWithMessage("Expected product to have name %s but was %s", expected, actual.name());
@@ -22,7 +24,7 @@ class ProductAssert extends AbstractAssert<ProductAssert, Product> {
         return this;
     }
 
-    ProductAssert hasDescription(String expected) {
+    ProductAssert hasDescription(ProductDescription expected) {
         isNotNull();
         if (!actual.description().equals(expected)) {
             failWithMessage("Expected product to have description %s but was %s", expected, actual.description());

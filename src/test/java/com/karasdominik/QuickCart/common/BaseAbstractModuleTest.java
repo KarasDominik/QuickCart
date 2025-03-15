@@ -22,7 +22,7 @@ public class BaseAbstractModuleTest {
     private int port;
 
     @BeforeEach
-    void setUp() {
+    protected void setUp() {
         RestAssured.port = port;
     }
 

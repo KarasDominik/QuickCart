@@ -22,4 +22,8 @@ public record ProductDescription(String value) {
         notShorterThan(value, MIN_LENGTH, DESCRIPTION);
         notLongerThan(value, MAX_LENGTH, DESCRIPTION);
     }
+
+    public String toString() {
+        return value;
+    }
 }

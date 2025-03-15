@@ -22,4 +22,8 @@ public record ProductName(String value) {
         notShorterThan(value, MIN_LENGTH, NAME);
         notLongerThan(value, MAX_LENGTH, NAME);
     }
+
+    public String toString() {
+        return value;
+    }
 }

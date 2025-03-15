@@ -3,8 +3,12 @@ package com.karasdominik.QuickCart.inventory.domain.valueobjects;
 import com.karasdominik.QuickCart.common.fields.FieldInfo;
 
 import static com.karasdominik.QuickCart.common.fields.FieldAssertions.notLessThan;
+import static com.karasdominik.QuickCart.common.fields.FieldAssertions.notMoreThan;
 
 public record ProductQuantity(int value) {
+
+    private static final int MIN_VALUE = 0;
+    private static final int MAX_VALUE = 1000;
 
     private static final FieldInfo PRODUCT_QUANTITY = new FieldInfo("productQuantity");
 
@@ -13,6 +17,7 @@ public record ProductQuantity(int value) {
         }
 
         public ProductQuantity {
-            notLessThan(value, 0, PRODUCT_QUANTITY);
+            notLessThan(value, MIN_VALUE, PRODUCT_QUANTITY);
+            notMoreThan(value, MAX_VALUE, PRODUCT_QUANTITY);
         }
 }

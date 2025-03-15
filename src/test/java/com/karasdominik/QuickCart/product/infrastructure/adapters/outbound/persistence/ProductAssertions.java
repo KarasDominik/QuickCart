@@ -2,6 +2,8 @@ package com.karasdominik.QuickCart.product.infrastructure.adapters.outbound.pers
 
 import com.karasdominik.QuickCart.common.dto.ProductId;
 import com.karasdominik.QuickCart.product.domain.valueobjects.Price;
+import com.karasdominik.QuickCart.product.domain.valueobjects.ProductDescription;
+import com.karasdominik.QuickCart.product.domain.valueobjects.ProductName;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -18,8 +20,8 @@ public class ProductAssertions {
     public void assertProductCreated(ProductId id, Map<String, Object> expected) {
         var product = products.findById(id).orElseThrow();
         assertThat(product)
-                .hasName(expected.get("name").toString())
-                .hasDescription(expected.get("description").toString())
+                .hasName(ProductName.of(expected.get("name").toString()))
+                .hasDescription(ProductDescription.of(expected.get("description").toString()))
                 .hasPrice(Price.of(expected.get("price").toString()));
     }
 }

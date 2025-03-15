@@ -29,6 +29,12 @@ public class FieldAssertions {
         }
     }
 
+    public static void notMoreThan(int value, int maxValue, FieldInfo field) {
+        if (value > maxValue) {
+            throw new InvalidFieldException(String.format("Field '%s' cannot be more than than %s", field.name(), maxValue));
+        }
+    }
+
     public static void notShorterThan(String value, int minLength, FieldInfo field) {
         if (value.length() < minLength) {
             throw new InvalidFieldException(String.format("Field '%s' must contain at least %s characters", field.name(), minLength));

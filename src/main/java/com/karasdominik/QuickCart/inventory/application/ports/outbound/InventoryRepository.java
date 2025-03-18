@@ -9,6 +9,8 @@ public interface InventoryRepository {
 
     Optional<StockLevel> getBy(ProductId productId);
 
+    StockLevel findOrThrowBy(ProductId productId);
+
     void save(StockLevel stockLevel);
 
     void deleteAll();

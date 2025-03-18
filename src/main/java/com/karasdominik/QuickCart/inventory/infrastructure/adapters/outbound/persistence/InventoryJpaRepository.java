@@ -10,4 +10,9 @@ import java.util.Optional;
 interface InventoryJpaRepository extends JpaRepository<StockLevel, StockLevelId> {
 
     Optional<StockLevel> findByProductId(ProductId productId);
+
+    default StockLevel findOrThrowBy(ProductId productId) {
+        return findByProductId(productId)
+                .orElseThrow(() -> new RuntimeException("Stock level not found"));
+    }
 }

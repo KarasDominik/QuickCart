@@ -4,6 +4,8 @@ import com.karasdominik.QuickCart.common.exceptions.InvalidFieldException;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
+import java.util.Collection;
+import java.util.Map;
 
 import static io.micrometer.common.util.StringUtils.isBlank;
 import static lombok.AccessLevel.PRIVATE;
@@ -47,9 +49,27 @@ public class FieldAssertions {
         }
     }
 
+    public static void notEmpty(Map<?, ?> value, FieldInfo field) {
+        if (value.isEmpty()) {
+            throw new InvalidFieldException(String.format("Field '%s' cannot be empty", field.name()));
+        }
+    }
+
+    public static void notEmpty(Collection<?> value, FieldInfo field) {
+        if (value.isEmpty()) {
+            throw new InvalidFieldException(String.format("Field '%s' cannot be empty", field.name()));
+        }
+    }
+
     public static void greaterThan(BigDecimal value, BigDecimal threshold, FieldInfo field) {
         if (value.compareTo(threshold) <= 0) {
             throw new InvalidFieldException(String.format("Field '%s' has to be greater than %s", field.name(), threshold));
+        }
+    }
+
+    public static void isValid(boolean expression, FieldInfo fieldInfo) {
+        if (!expression) {
+            throw new InvalidFieldException(String.format("Field '%s' is invalid", fieldInfo.name()));
         }
     }
 }

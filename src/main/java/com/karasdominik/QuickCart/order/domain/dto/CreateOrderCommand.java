@@ -6,6 +6,8 @@ import com.karasdominik.QuickCart.order.domain.valueobjects.OrderQuantity;
 
 import java.util.Map;
 
+import static com.karasdominik.QuickCart.common.fields.FieldAssertions.isValid;
+import static com.karasdominik.QuickCart.common.fields.FieldAssertions.notEmpty;
 import static com.karasdominik.QuickCart.common.fields.FieldAssertions.notNull;
 
 public record CreateOrderCommand(Map<ProductId, OrderQuantity> orderedProducts) {
@@ -13,6 +15,13 @@ public record CreateOrderCommand(Map<ProductId, OrderQuantity> orderedProducts) 
     private static final FieldInfo ORDERED_PRODUCTS = new FieldInfo("orderedProducts");
 
     public CreateOrderCommand {
+        notEmpty(orderedProducts, ORDERED_PRODUCTS);
         notNull(orderedProducts, ORDERED_PRODUCTS);
+        isValid(productsNotNull(orderedProducts), ORDERED_PRODUCTS);
+    }
+
+    private boolean productsNotNull(Map<ProductId, OrderQuantity> orderedProducts) {
+        return orderedProducts.keySet().stream()
+                .noneMatch(key -> key == null || orderedProducts.get(key) == null);
     }
 }

@@ -20,4 +20,12 @@ public record ProductQuantity(int value) {
             notLessThan(value, MIN_VALUE, PRODUCT_QUANTITY);
             notMoreThan(value, MAX_VALUE, PRODUCT_QUANTITY);
         }
+
+    public ProductQuantity subtract(ProductQuantity quantity) {
+        return new ProductQuantity(value - quantity.value);
+    }
+
+    public boolean isGreaterOrEqualTo(ProductQuantity quantity) {
+        return value >= quantity.value;
+    }
 }

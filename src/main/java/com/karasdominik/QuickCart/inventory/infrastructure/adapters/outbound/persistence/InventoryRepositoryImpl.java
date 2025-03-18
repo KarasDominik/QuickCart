@@ -1,7 +1,7 @@
 package com.karasdominik.QuickCart.inventory.infrastructure.adapters.outbound.persistence;
 
-import com.karasdominik.QuickCart.inventory.application.ports.outbound.InventoryRepository;
 import com.karasdominik.QuickCart.common.dto.ProductId;
+import com.karasdominik.QuickCart.inventory.application.ports.outbound.InventoryRepository;
 import com.karasdominik.QuickCart.inventory.domain.entities.StockLevel;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -17,6 +17,11 @@ class InventoryRepositoryImpl implements InventoryRepository {
     @Override
     public Optional<StockLevel> getBy(ProductId productId) {
         return inventory.findByProductId(productId);
+    }
+
+    @Override
+    public StockLevel findOrThrowBy(ProductId productId) {
+        return inventory.findOrThrowBy(productId);
     }
 
     @Override

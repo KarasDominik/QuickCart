@@ -41,4 +41,12 @@ public class StockLevel {
     public void update(ProductQuantity stockQuantity) {
         this.quantity = stockQuantity;
     }
+
+    public void reduce(ProductQuantity quantity) {
+        this.quantity = this.quantity.subtract(quantity);
+    }
+
+    public boolean hasEnough(ProductQuantity quantity) {
+        return this.quantity.isGreaterOrEqualTo(quantity);
+    }
 }

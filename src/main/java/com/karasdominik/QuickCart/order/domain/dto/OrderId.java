@@ -27,4 +27,9 @@ public record OrderId(UUID value) implements Serializable {
     public static OrderId create() {
         return OrderId.of(randomUUID());
     }
+
+    @Override
+    public String toString() {
+        return value.toString();
+    }
 }

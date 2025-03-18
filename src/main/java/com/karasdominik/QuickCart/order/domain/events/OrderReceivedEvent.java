@@ -4,4 +4,4 @@ import com.karasdominik.QuickCart.common.dto.ProductId;
 
 import java.util.Map;
 
-public record OrderCreatedEvent(Map<ProductId, Integer> orderedProducts) implements OrderEvent {}
+public record OrderReceivedEvent(Map<ProductId, Integer> orderedProducts) implements OrderEvent {}

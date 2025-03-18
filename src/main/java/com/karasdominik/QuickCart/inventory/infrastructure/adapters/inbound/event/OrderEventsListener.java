@@ -3,7 +3,7 @@ package com.karasdominik.QuickCart.inventory.infrastructure.adapters.inbound.eve
 import com.karasdominik.QuickCart.inventory.application.ports.inbound.InventoryMessagingApi;
 import com.karasdominik.QuickCart.inventory.domain.dto.ReduceStockLevelsCommand;
 import com.karasdominik.QuickCart.inventory.domain.valueobjects.ProductQuantity;
-import com.karasdominik.QuickCart.order.domain.events.OrderCreatedEvent;
+import com.karasdominik.QuickCart.order.domain.events.OrderReceivedEvent;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.event.EventListener;
@@ -20,7 +20,7 @@ public class OrderEventsListener {
     private final InventoryMessagingApi messagingApi;
 
     @EventListener
-    public void handle(OrderCreatedEvent event) {
+    public void handle(OrderReceivedEvent event) {
         log.info("Received order created event");
         messagingApi.update(ReduceStockLevelsCommand.builder()
                 .toBeReduced(event.orderedProducts().entrySet().stream()

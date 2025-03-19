@@ -7,6 +7,7 @@ import com.karasdominik.QuickCart.order.domain.dto.CreateOrderCommand;
 import com.karasdominik.QuickCart.order.domain.dto.OrderId;
 import com.karasdominik.QuickCart.order.domain.entities.Order;
 import com.karasdominik.QuickCart.order.domain.entities.OrderedProduct;
+import com.karasdominik.QuickCart.order.domain.events.OrderCreatedEvent;
 import com.karasdominik.QuickCart.order.domain.events.OrderReceivedEvent;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -30,9 +31,10 @@ class OrderService implements OrderCreator {
     public OrderId create(CreateOrderCommand command) {
         log.info("Starting to create new order");
         var order = orders.save(Order.create(command, Instant::now));
-        publisher.publish(new OrderReceivedEvent(order.orderedProducts().stream()
+        publisher.publish(new OrderReceivedEvent(command.email(), order.orderedProducts().stream()
                 .collect(toMap(OrderedProduct::productId, e -> e.quantity().value()))));
         log.info("Order {} created", order.id());
+        publisher.publish(new OrderCreatedEvent(order.id().value(), "test@gmail.com"));
         return order.id();
     }
 }

@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: QuickCart
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/quickcart
+    username: quickcart
+    password: quickcart
+
+  mail:
+    host: localhost
+    port: 1025
+    http:
+      port: 8025
+
+quickcart:
+  mail:
+    from: support@quickcart.com

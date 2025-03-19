@@ -8,3 +8,9 @@ services:
       POSTGRES_DB: quickcart
     ports:
         - "5432:5432"
+  mailhog:
+    image: mailhog/mailhog
+    container_name: quickcart-mailhog
+    ports:
+      - "8025:8025"
+      - "1025:1025"

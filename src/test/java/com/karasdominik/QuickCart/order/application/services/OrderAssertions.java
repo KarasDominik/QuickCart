@@ -4,6 +4,7 @@ import com.karasdominik.QuickCart.common.dto.ProductId;
 import com.karasdominik.QuickCart.order.application.ports.outbound.OrderRepository;
 import com.karasdominik.QuickCart.order.domain.dto.OrderId;
 import com.karasdominik.QuickCart.order.domain.entities.OrderedProduct;
+import com.karasdominik.QuickCart.order.domain.valueobjects.Email;
 import com.karasdominik.QuickCart.order.domain.valueobjects.OrderQuantity;
 import lombok.RequiredArgsConstructor;
 import org.assertj.core.groups.Tuple;
@@ -27,6 +28,7 @@ public class OrderAssertions {
     public void assertOrderCreated(OrderId id, Map<String, Object> expected) {
         var order = orders.findOrThrow(id);
         assertThat(order.status()).isEqualTo(WAITING_FOR_PAYMENT);
+        assertThat(order.email()).isEqualTo(Email.of(expected.get("email").toString()));
 
         List<Map<String, Object>> expectedProducts = (List<Map<String, Object>>) expected.get("orderedProducts");
 

@@ -11,7 +11,10 @@ import static lombok.AccessLevel.PRIVATE;
 class RequestMapper {
 
     static CreateOrderCommand asCommand(CreateOrderRequest request) {
-        return new CreateOrderCommand(request.orderedProducts().stream()
-                .collect(toMap(OrderedProduct::productId, OrderedProduct::quantity)));
+        return CreateOrderCommand.builder()
+                .email(request.email())
+                .orderedProducts(request.orderedProducts().stream()
+                        .collect(toMap(OrderedProduct::productId, OrderedProduct::quantity)))
+                .build();
     }
 }

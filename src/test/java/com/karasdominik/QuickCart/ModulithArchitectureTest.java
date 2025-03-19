@@ -7,6 +7,8 @@ public class ModulithArchitectureTest {
 
     @Test
     void verifyModularStructure() {
-        ApplicationModules.of(QuickCartApplication.class).verify();
+        var modules = ApplicationModules.of(QuickCartApplication.class);
+
+        modules.verify();
     }
 }

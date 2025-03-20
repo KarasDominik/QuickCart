@@ -34,7 +34,7 @@ class OrderService implements OrderCreator {
         publisher.publish(new OrderReceivedEvent(command.email(), order.orderedProducts().stream()
                 .collect(toMap(OrderedProduct::productId, e -> e.quantity().value()))));
         log.info("Order {} created", order.id());
-        publisher.publish(new OrderCreatedEvent(order.id().value(), "test@gmail.com"));
+        publisher.publish(new OrderCreatedEvent(order.id().value(), "test@gmail.com", null));
         return order.id();
     }
 }

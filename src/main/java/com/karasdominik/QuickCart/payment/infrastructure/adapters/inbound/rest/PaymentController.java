@@ -16,7 +16,7 @@ class PaymentController {
 
     private final PaymentExternalApi externalApi;
 
-    @GetMapping("/url/{orderId}")
+    @GetMapping("/checkout-url/{orderId}")
     public GetPaymentUrlResponse getPaymentUrl(@PathVariable UUID orderId) {
         return new GetPaymentUrlResponse(externalApi.getPaymentUrl(orderId));
     }

@@ -9,7 +9,7 @@ import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
-public class PaymentRepositoryImpl implements PaymentRepository {
+class PaymentRepositoryImpl implements PaymentRepository {
 
     private final PaymentJpaRepository payments;
 
@@ -22,5 +22,15 @@ public class PaymentRepositoryImpl implements PaymentRepository {
     public Payment findBy(UUID orderId) {
         return payments.findByOrderId(orderId)
                 .orElseThrow();
+    }
+
+    @Override
+    public void deleteAll() {
+        payments.deleteAll();
+    }
+
+    @Override
+    public long count() {
+        return payments.count();
     }
 }

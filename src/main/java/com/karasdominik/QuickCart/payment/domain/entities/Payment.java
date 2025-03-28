@@ -5,7 +5,6 @@ import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.Column;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -13,11 +12,7 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import java.util.HashSet;
-import java.util.Set;
 import java.util.UUID;
-
-import static jakarta.persistence.CascadeType.ALL;
 
 @Entity
 @Table(name = "payment")
@@ -25,7 +20,7 @@ import static jakarta.persistence.CascadeType.ALL;
 @NoArgsConstructor
 @Builder
 @Getter
-@EqualsAndHashCode(exclude = "orderedProducts")
+@EqualsAndHashCode
 public class Payment {
 
     @EmbeddedId
@@ -34,11 +29,5 @@ public class Payment {
 
     private UUID orderId;
 
-    @OneToMany(mappedBy = "payment", cascade = ALL, orphanRemoval = true)
-    @Builder.Default
-    private Set<PaymentOrderedProduct> orderedProducts = new HashSet<>();
-
-    public void addProducts(Set<PaymentOrderedProduct> products) {
-        orderedProducts.addAll(products);
-    }
+    private String checkoutUrl;
 }

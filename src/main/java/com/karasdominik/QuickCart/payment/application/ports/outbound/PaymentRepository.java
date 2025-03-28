@@ -9,4 +9,8 @@ public interface PaymentRepository {
     void save(Payment payment);
 
     Payment findBy(UUID orderId);
+
+    void deleteAll();
+
+    long count();
 }

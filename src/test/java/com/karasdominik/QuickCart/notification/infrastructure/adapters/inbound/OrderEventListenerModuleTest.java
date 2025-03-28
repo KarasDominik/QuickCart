@@ -16,6 +16,7 @@ import org.springframework.test.context.DynamicPropertySource;
 import org.testcontainers.containers.GenericContainer;
 
 import java.time.Duration;
+import java.util.Map;
 
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
 
@@ -49,7 +50,7 @@ public class OrderEventListenerModuleTest extends BaseAbstractModuleTest {
     void shouldSendEmailWhenOrderIsCreated(Scenario scenario) {
         var orderId = OrderId.create().value();
         var email = "test12@gmail.com";
-        scenario.publish(new OrderCreatedEvent(orderId, email))
+        scenario.publish(new OrderCreatedEvent(orderId, email, Map.of()))
                 .andWaitAtMost(Duration.ofSeconds(3))
                 .forStateChange(() -> mails.count());
 

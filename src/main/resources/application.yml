@@ -16,3 +16,5 @@ spring:
 quickcart:
   mail:
     from: support@quickcart.com
+  stripe:
+    api-key: sk_test_51R4UxCP2acvI4IuRPfQLnaDzJyF89qzbRRdrnzCw2qvW6jigRxcVXDwkTd7eqaxmJbOPZO5smLpJ1Gn4UqBCFJx0005hAYauaD
